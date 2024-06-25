@@ -22,19 +22,22 @@ function adicionar(){
 
     console.log(listaAmigos)
     console.log(ordem)
+    listaSorteio.innerHTML = ''
     }
 }
 
 function sortear(){
-    let listaSorteio = document.getElementById("lista-sorteio");
-    let listaText = document.getElementById("lista-amigos").textContent = "";
-  
-    let novaOrdem = obterOrdemAleatoria(0, listaAmigos.length-1);
-    for (i=0;i<2;i++){
-        listaSorteio.innerHTML = `${novaOrdem} <br>`;
-        listaSorteio.insertAdjacentHTML('beforeend', novaOrdem);
-    }
-
+    listaSorteio = document.getElementById("lista-sorteio");
+    let Amigos = obterOrdemAleatoria(listaAmigos);
+    
+    for(i=0;i<Amigos.length;i++){
+        if (i == Amigos.length-1){
+        listaSorteio.innerHTML = listaSorteio.innerHTML + Amigos[i] + " --> " + Amigos[0] + "<br>"
+        } else
+        listaSorteio.innerHTML = listaSorteio.innerHTML + Amigos[i] + " --> " + Amigos[i+1] + "<br>"
+    } 
+    document.getElementById("lista-amigos").innerHTML = ''
+    listaAmigos = []
 }
 
 function reiniciar(){
@@ -46,7 +49,7 @@ function reiniciar(){
     ordem = []
 }
 
-function obterOrdemAleatoria(min, max) {
+function obterOrdemAleatoria(listaAmigos) {
         // Algoritmo de Fisher-Yates para embaralhar o array
         for (let i = listaAmigos.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
