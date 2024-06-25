@@ -1,7 +1,5 @@
 let amigosPar = 0;
-let vezes = -1;
 let listaAmigos = []
-let ordem = []
 reiniciar();
 
 function adicionar(){
@@ -15,10 +13,7 @@ function adicionar(){
     document.getElementById("lista-amigos").innerHTML = `${listaText}${nome}, `;
     document.getElementById("nome-amigo").value = ""
 
-    vezes++
-    amigosPar = vezes % 2 == 0
     listaAmigos.push(nome)
-    ordem.push(vezes)
 
     console.log(listaAmigos)
     console.log(ordem)
@@ -43,10 +38,8 @@ function sortear(){
 function reiniciar(){
     document.getElementById("lista-amigos").innerHTML = ``;
     document.getElementById("nome-amigo").value = ""
-    amigosPar = 0;
-    vezes = -1;
     listaAmigos = []
-    ordem = []
+    listaSorteio.innerHTML = ''
 }
 
 function obterOrdemAleatoria(listaAmigos) {
